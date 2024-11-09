@@ -28,7 +28,7 @@
     }
     const calculateAverageGrade = (std:student):number =>{
         const grade = std.grades.reduce((acc , sum)=> acc+sum, 0);
-        return grade / std.grades.length
+        return grade / std.grades.length;
     }
    const student1: student = {
     name : "siam",
@@ -39,5 +39,51 @@
    console.log(averageGrade)
 
    // You are given an object representing a book with properties title (string), author (string), and publishedYear (number). Use type alias for declaring the object. Write a TypeScript function called isRecentBook that takes this book object as input and determines if the book was published in the last 5 years.
-   
+   type Book = {
+    title : string ;
+    author : string;
+    publishedYear : number;
+   }
+   const isRecentBook = (book:Book):boolean =>{
+    const currentYear = new Date().getFullYear();
+    return currentYear - book.publishedYear <= 5;
+   }
+   console.log(isRecentBook({title: "Harry poter", author: "henry",publishedYear: 2019}))
+   // Create a TypeScript function logString that takes a parameter of type unknown and uses a type guard to check whether the parameter is of type string. If it is, log the string to the console. If it is not, log an error message.
+   const logString = (input:unknown):void =>{
+    if(typeof input === "string"){
+        console.log(input)
+       
+    }else {
+        console.error("error: there is an error")
+    }
+   }
+   console.log(logString("siam"))
+
+
+   // Design a TypeScript class Car that represents a basic car with properties for brand, model, and year. Implement a method displayInfo that displays information about the car.
+//     class Car {
+//     brand : string;
+//     model : string;
+//     year : number ;
+//     constructor(brand:string, model:string , year:number){
+//         this.brand = brand;
+//         this.model = model;
+//         this.year = year;
+
+//     }
+//    }
+  class Car {
+    constructor(
+        public brand : string,
+        public model : string,
+        public year : number
+    ){}
+    displayInfo():string{
+        return `your car model is ${this.model} from the company ${this.brand} realesed in
+         ${this.year}`
+    }
+  }
+  const myCar = new Car("BMW", "M7", 2018)
+  console.log(myCar.displayInfo())
 }
